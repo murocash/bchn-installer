@@ -44,4 +44,3 @@ EOF
 
 systemctl enable ${BCHN_USER}
 
-#su -c ${VERSION_HOME}'/bin/bitcoind -daemon' ${BCHN_USER}
