@@ -17,8 +17,8 @@ echo $ORIGIN
 curl -L -o $TARGET $ORIGIN
 tar -zxvf $TARGET
 rm $TARGET
-id -u bchn &>/dev/null || groupadd ${BCHN_USER}
-id -u bchn &>/dev/null || useradd ${BCHN_USER} -g ${BCHN_USER} -m -d $BCHN_HOME -s /bin/bash
+id -u ${BCHN_USER} &>/dev/null || groupadd ${BCHN_USER}
+id -u ${BCHN_USER} &>/dev/null || useradd ${BCHN_USER} -g ${BCHN_USER} -m -d $BCHN_HOME -s /bin/bash
 usermod -a -G ${BCHN_USER} ${BCHN_USER}
 VERSION_HOME=${BCHN_HOME}/$1
 mv $TARGET_PATH/bitcoin-cash-node-$1 ${VERSION_HOME}
