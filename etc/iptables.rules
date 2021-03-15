@@ -1,0 +1,14 @@
+*filter
+:INPUT DROP [15:744]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [963:920214]
+-A INPUT -i lo -j ACCEPT
+-A INPUT -p tcp -m tcp ! --tcp-flags FIN,SYN,RST,ACK SYN -m state --state NEW -j DROP
+-A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+-A INPUT -p tcp -m tcp --dport 22 -m state --state NEW -j ACCEPT
+-A INPUT -p tcp -m tcp --dport 80 -m state --state NEW -j ACCEPT
+-A INPUT -p tcp -m tcp --dport 443 -m state --state NEW -j ACCEPT
+-A INPUT -p tcp -m tcp --dport 8332 -m state --state NEW -j ACCEPT
+-A INPUT -p tcp -m tcp --dport 8333 -m state --state NEW -j ACCEPT
+-A OUTPUT -o lo -j ACCEPT
+COMMIT
